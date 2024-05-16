@@ -6,13 +6,27 @@ export default function Form(){
 
     const [height, setHeight] = useState(null)
     const [Weight, setWeight] = useState(null)
-    const [messageImc, setMessageImc] = useState("preencha sua altura")
+    const [messageImc, setMessageImc] = useState("informe seu peso")
     const [imc, setImc] = useState(null)
-    const [textButton, setTextButton] = useState("calcular IMC")
+    const [textButton, setTextButton] = useState("IMC")
+
 
     function imcCalculator(){
         return setImc((Weight/(height*height))).toFixed((2))
 
+    }
+    function validationImc(){
+        if(Weight !=null && height !=null){
+            imcCalculator()
+            setHeight(null)
+            setWeight(null)
+            setMessageImc("SEU IMC É =")
+            setTextButton("CALCULAR NOVAMENTE")
+            return
+        }
+        setImc(null)
+        setTextButton("calcular")
+        setMessageImc("preencha seu peso")
     }
 
     return(
