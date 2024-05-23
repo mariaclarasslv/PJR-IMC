@@ -6,7 +6,7 @@ export default function Form(){
 
     const [height, setHeight] = useState(null)
     const [Weight, setWeight] = useState(null)
-    const [messageImc, setMessageImc] = useState("informe seu peso")
+    const [messageImc, setMessageImc] = useState("informe seu peso e sua altura")
     const [imc, setImc] = useState(null)
     const [textButton, setTextButton] = useState("IMC")
 
@@ -34,20 +34,29 @@ export default function Form(){
             <View>     
 <Text>Altura</Text>
 <TextInput
+onChangeText={setHeight}
+value= {height}
 placeholder="Ex.1.75"
 keyboardType="numeric"
 />
 
 <Text>Peso</Text>
 <TextInput
+onChangeText={setWeight}
+value= {Weight}
 placeholder="Ex.55.766"
 keyboardType="numeric"
 />
 <Button
+onPress={() => validationImc()}
 title = {textButton}
 />
 
             </View>
+            <ResultImc
+            messageResultImc = {messageImc}
+            ResultImc = {imc}
+            />
         </View>
     )
 }
